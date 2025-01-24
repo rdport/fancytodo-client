@@ -1,0 +1,335 @@
+* {
+   box-sizing: border-box;
+}
+
+html,
+body {
+   height: 100%; 
+   overflow-y:auto;
+   overflow-x:hidden;
+}
+
+#login-page {
+   height: 100%;
+   padding: 5rem 0;
+   display: flex;
+   align-items: center;
+}
+
+#register-page {
+   height: 100%;
+   padding: 5rem 0;
+   display: flex;
+   align-items: center;
+}
+
+.register-login-content {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+
+.login-image-container {
+   padding-top: 13rem;
+}
+
+.form-container {
+   padding-top: 1rem;
+   min-width: 20rem;
+   min-height: 30rem;
+   border-radius: 1rem;
+   border: solid 0.2rem;
+   background-color: #ffe6cc;
+}
+
+#login-form {
+   margin: auto;
+   max-width: 250px;
+}
+
+.login-form-title {
+   text-align: center;
+   margin-bottom: 3rem;
+   margin-top: 2rem;
+}
+
+label {
+   text-align: left;
+   font-weight: 700;
+}
+
+input[type=text], input[type=email], input[type=password], input[type=date] {
+   border: solid black .1rem;
+   border-radius: 0.5rem;
+   color: black;
+}
+
+.text-area {
+   border: solid black .1rem;
+   border-radius: 0.5rem;
+   color: black;
+}
+
+.login-btn-container {
+   margin-top: 3rem;
+   /* display: flex;
+   flex-wrap: wrap; */
+}
+
+#login-login-btn {
+   width: 100%;
+   background-color: orange ;
+   color:black;
+   font-weight: 500;
+   border: solid black 0.1rem;
+}
+
+#google-btn {
+   width: 100%;
+   /* border: solid black 0.1rem; */
+}
+
+#login-register-btn {
+   /* width: 100%; */
+   width: 250px;
+   background-color: black;
+   color: white;
+}
+
+.register-image-container {
+   padding-top: 14rem;
+}
+
+#register-form {
+   margin: auto;
+   max-width: 250px;
+}
+
+.register-form-title {
+   text-align: center;
+   margin-bottom: 1.5rem;
+   margin-top: 1rem;
+}
+
+.register-btn-container {
+   margin-top: 1.5rem;
+}
+
+#register-submit-btn {
+   width: 100%;
+   background-color: orange ;
+   color:black;
+   font-weight: 500;
+   border: solid black 0.1rem;
+}
+
+#register-cancel-btn {
+   width: 100%;
+   background-color: black;
+   color: white;
+}
+
+.add-task-form-content {
+   display: flex;
+   justify-content: center;
+}
+
+.add-form-container {
+   padding-top: 1rem;
+   padding-bottom: 2rem;
+   min-width: 26rem;
+   min-height: 30rem;
+   border-radius: 1rem;
+   border: solid 0.2rem;
+   background-color: #ffe6cc;
+}
+
+#add-task-form {
+   margin: auto;
+   max-width: 23rem;
+}
+
+.add-task-form-title {
+   text-align: center;
+   margin-bottom: 1.5rem;
+   margin-top: 1rem;
+}
+
+#add-task-btn {
+   width: 100%;
+   background-color: orange ;
+   color:black;
+   font-weight: 500;
+   border: solid black 0.1rem;
+}
+
+.main-uncompleted-container {
+   border: solid black 0.1rem;
+   border-radius: 0.5rem;
+   background-color: #ffd280;
+   padding-bottom: 1rem;
+}
+
+.main-completed-container {
+   border: solid black 0.1rem;
+   border-radius: 0.5rem;
+   background-color: #80ff80;
+   padding-bottom: 1rem;
+}
+
+.main-expired-container {
+   border: solid black 0.1rem;
+   border-radius: 0.5rem;
+   background-color: #ff6666;
+   padding-bottom: 1rem;
+}
+
+#main-uncompleted-content {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+} 
+
+#main-completed-content {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+} 
+
+#main-expired-content {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+} 
+
+.mark_as_done-task-icon {
+   position: relative;
+   bottom: 0.2rem;
+}
+
+.mark_as_done-task-icon {
+   position: relative;
+   bottom: 0.2rem;
+}
+
+.mark_as_undone-task-icon {
+   position: relative;
+   bottom: 0.2rem;
+}
+
+.edit-task-icon {
+   position: relative;
+   bottom: 0.2rem;
+}
+
+.delete-task-icon {
+   position: relative;
+   bottom: 0.2rem;
+}
+
+/* .edit-task-container {
+   display:flex;
+   justify-content: center;
+} */
+
+.edit-task-form-content {
+   padding-top: 1rem;
+   min-width: 26rem;
+   min-height: 32rem;
+   border-radius: 1rem;
+   border: solid 0.2rem;
+   background-color: #ffe6cc;
+   margin: auto;
+}
+
+#edit-task-form {
+   margin: auto;
+   max-width: 23rem;
+}
+
+.edit-task-form-title {
+   text-align: center;
+   margin-bottom: 1.5rem;
+   margin-top: 1rem;
+}
+
+#edit-task-btn {
+   width: 100%;
+   background-color: orange ;
+   color:black;
+   font-weight: 500;
+   border: solid black 0.1rem;
+}
+
+#edit-cancel-btn {
+   width: 100%;
+   background-color: black;
+   color: white;
+}
+
+.weather-widget-container{
+   background-color: #ffe6cc;
+}
+
+.custom-border {
+   border-radius: 1rem;
+   border: solid gray 0.1rem;
+}
+
+#welcome-title {
+   font-size: 2rem;
+   border-bottom: solid gray 0.15rem;
+   text-align: center;
+} 
+
+#user-name {
+   font-size: 1.5rem;
+   text-align: center;
+}
+
+.weather-content {
+   display:flex;
+   flex-direction: column;
+   justify-content: center;
+   background-color: #ffe6cc;
+   padding: 1rem;
+   max-height: 22rem;
+   overflow: hidden;
+}
+
+.quote-widget-container{
+   background-color: #ffe6cc;
+}
+
+.quote-content {
+   padding: 1rem;
+   width: 100%;
+   height: 55%;
+   padding: 1rem;
+   overflow: auto;
+}
+
+#quote-author {
+   font-size: 1.5rem;
+   text-align: center;
+}
+
+#hourly-forecast-content {
+   width: 28rem;
+   height: 20rem;
+   border-radius: 1rem;
+   border: solid 0.2rem;
+   padding: 0;
+   margin: auto;
+   overflow: auto;
+}
+
+#daily-forecast-content {
+   width: 28rem;
+   height: 22rem;
+   border-radius: 1rem;
+   border: solid 0.2rem;
+   padding: 0;
+   margin: auto;
+   overflow: auto;
+}
