@@ -19,10 +19,13 @@ function showRegisterPage() {
 }
 
 function showMainPage(accesstoken, csrftoken, fullName) {
-    getCurrentWeather(accesstoken, csrftoken);
-    getQuote(accesstoken, csrftoken);
+    // console.log(accesstoken, "AT helper.js");
+    // console.log(csrftoken, "CT helper.js");
+    // console.log(fullName, "FN helper.js");
     $('html, body').removeClass("no-vertical-scroll");
     $('.body-container').removeClass("center-viewport");
+    getCurrentWeather(accesstoken, csrftoken);
+    getQuote(accesstoken, csrftoken);
     $("#user-name").text("");
     $("#user-name").text(fullName);
     $("#login-page").hide();
@@ -47,7 +50,7 @@ function login(){
     const password = $("#login-password").val();
 
     $.ajax({
-        url: "https://fancytodo-server.onrender.com/login",
+        url: "http://localhost:3000/login",
         method: "POST",
         xhrFields: {
             withCredentials: true
@@ -64,6 +67,7 @@ function login(){
             accesstoken = response.accessToken;
             csrftoken = response.csrfToken;
             fullName = response.fullName;
+            console.log(accesstoken, csrftoken, fullName, "login");
             showMainPage(accesstoken, csrftoken, fullName);
             Swal.fire(
                 'Logged In!',
@@ -83,7 +87,7 @@ function login(){
 
 function reauth(cb, id, event) {
     $.ajax({
-        url: "https://fancytodo-server.onrender.com/reauth",
+        url: "http://localhost:3000/reauth",
         method: "POST",
         xhrFields: {
             withCredentials: true
@@ -112,7 +116,7 @@ function reauth(cb, id, event) {
         .fail((err) => {
             isAuthenticated = false;
             showLoginPage();
-            console.log(err);
+            // console.log(err);
             // printError(err);
         })
 }
@@ -123,7 +127,7 @@ function register(){
     const email = $("#register-email").val();
     const password = $("#register-password").val();
     $.ajax({
-        url: "https://fancytodo-server.onrender.com/register",
+        url: "http://localhost:3000/register",
         method: "POST",
         xhrFields: {
             withCredentials: true
@@ -154,9 +158,11 @@ function register(){
 
 function logout(accesstoken, csrftoken) {
     // localStorage.clear();
+    console.log(accesstoken, "logout <<<<<<<<<");
+    console.log(csrftoken, "logout <<<<<<<<<");
     showLoginPage();
     $.ajax({
-        url: "https://fancytodo-server.onrender.com/logout",
+        url: "http://localhost:3000/logout",
         method: "POST",
         xhrFields: {
             withCredentials: true
@@ -187,7 +193,7 @@ function logout(accesstoken, csrftoken) {
 function handleCredentialResponse(response) {
     var googleToken = response.credential;
     $.ajax({
-        url: "https://fancytodo-server.onrender.com/googleLogin",
+        url: "http://localhost:3000/googleLogin",
         method: "POST",
         xhrFields: {
             withCredentials: true
@@ -196,13 +202,13 @@ function handleCredentialResponse(response) {
             googleToken
         }
     })
-    .done((data) => {
+    .done((response) => {
         // localStorage.setItem("accesstoken", response.accesstoken);
         // localStorage.setItem("fullName", response.fullName);
         // getQuote();
-        accesstoken = data.accessToken;
-        csrftoken = data.csrfToken;
-        fullName = data.fullName;
+        accesstoken = response.accessToken;
+        csrftoken = response.csrfToken;
+        fullName = response.fullName;
         showMainPage(accesstoken, csrftoken, fullName);
         Swal.fire(
             'Logged In!',
@@ -221,7 +227,7 @@ function fetchTodos(accesstoken, csrftoken){
     $("#edit-form-notification-container").empty();
     $.ajax({
         method: "POST",
-        url : "https://fancytodo-server.onrender.com/todos",
+        url : "http://localhost:3000/todos",
         xhrFields: {
             withCredentials: true
         },
@@ -330,7 +336,7 @@ function createTask(accesstoken, csrftoken) {
 
     $.ajax({
         method: "POST",
-        url : "https://fancytodo-server.onrender.com/todos/add",
+        url : "http://localhost:3000/todos/add",
         xhrFields: {
             withCredentials: true
         },
@@ -369,7 +375,7 @@ function createTask(accesstoken, csrftoken) {
 function completeTask(accesstoken, csrftoken, id) {
     $.ajax({
         method: "PATCH",
-        url: `https://fancytodo-server.onrender.com/todos/${id}`,
+        url: `http://localhost:3000/todos/${id}`,
         headers: {
             accesstoken,
             csrftoken
@@ -402,7 +408,7 @@ function completeTask(accesstoken, csrftoken, id) {
 function uncompleteTask(accesstoken, csrftoken, id) {
     $.ajax({
         method: "PATCH",
-        url: `https://fancytodo-server.onrender.com/todos/${id}`,
+        url: `http://localhost:3000/todos/${id}`,
         xhrFields: {
             withCredentials: true
         },
@@ -435,7 +441,7 @@ function uncompleteTask(accesstoken, csrftoken, id) {
 function editForm(accesstoken, csrftoken, id) {
     $.ajax({
         method: "POST",
-        url: `https://fancytodo-server.onrender.com/todos/${id}`,
+        url: `http://localhost:3000/todos/${id}`,
         xhrFields: {
             withCredentials: true
         },
@@ -467,7 +473,7 @@ function editTask(accesstoken, csrftoken, id, event) {
     const due_date = $("#edit-task-due_date").val();
     $.ajax({
         method: "PUT",
-        url: `https://fancytodo-server.onrender.com/todos/${id}`,
+        url: `http://localhost:3000/todos/${id}`,
         xhrFields: {
             withCredentials: true
         },
@@ -507,7 +513,7 @@ function deleteConfirm(id) {
 function deleteTask(accesstoken, csrftoken, id) {
     $.ajax({
         method: "DELETE",
-        url: `https://fancytodo-server.onrender.com/todos/${id}`,
+        url: `http://localhost:3000/todos/${id}`,
         xhrFields: {
             withCredentials: true
         },
@@ -551,7 +557,7 @@ function deleteTask(accesstoken, csrftoken, id) {
 //         const longitude = position.coords.longitude;
 //         console.log(latitude, longitude)
 //         $.ajax({
-//             url: "https://fancytodo-server.onrender.com/weather",
+//             url: "http://localhost:3000/weather",
 //             method: "POST",
 //             headers: {
 //                 accesstoken: localStorage.getItem("accesstoken")
@@ -618,7 +624,7 @@ function deleteTask(accesstoken, csrftoken, id) {
 //         const longitude = position.coords.longitude;
 //         console.log(latitude, longitude)
 //         $.ajax({
-//             url: "https://fancytodo-server.onrender.com/weather",
+//             url: "http://localhost:3000/weather",
 //             method: "POST",
 //             headers: {
 //                 accesstoken: localStorage.getItem("accesstoken")
@@ -686,8 +692,9 @@ function getCurrentWeather(accesstoken, csrftoken) {
     function success(position) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
+        // console.log(latitude, longitude)
         $.ajax({
-            url: "https://fancytodo-server.onrender.com/current-weather",
+            url: "http://localhost:3000/current-weather",
             method: "POST",
             xhrFields: {
                 withCredentials: true
@@ -702,11 +709,13 @@ function getCurrentWeather(accesstoken, csrftoken) {
             }
         })
         .done((response) => {
+            // console.log(response);
             const city = response.name;
             // const date = unixToLocal(response.current.dt)[0];
             const date = unixToLocal(response.dt)[0];
             const time = unixToLocal(response.dt)[1];
             const dateTime = `${date}, ${time}`;
+            // console.log(date)
             // const description = firstLetterUpperCase(response.current.weather[0].description);
             const description = firstLetterUpperCase(response.weather[0].description);
             // const temperature = `${Math.round(response.current.temp)} \xB0C`;
@@ -751,8 +760,9 @@ function getForecast(accesstoken, csrftoken) {
     function success(position) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
+        // console.log(latitude, longitude)
         $.ajax({
-            url: "https://fancytodo-server.onrender.com/weather",
+            url: "http://localhost:3000/weather",
             method: "POST",
             xhrFields: {
                 withCredentials: true
@@ -767,6 +777,7 @@ function getForecast(accesstoken, csrftoken) {
             }
         })
         .done((response) => {
+            console.log(response)
             $("#forecast-content").empty();
             const city = response.city.name;
 
@@ -785,7 +796,7 @@ function getForecast(accesstoken, csrftoken) {
                 $("#forecast-content").append(`
                 <div class="weather-content custom-border">
                     <h1>${city}</h1>
-                    <p>${dateTime}</p>
+                    <p style="color: blue; font-weight: bold">${dateTime}</p>
                     <div style="display:flex;">
                         <div>
                             <img class="custom-border" src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png"
@@ -829,8 +840,10 @@ function getForecast(accesstoken, csrftoken) {
 }
 
 function getQuote(accesstoken, csrftoken) {
+    console.log(accesstoken, "AT helper.js");
+    console.log(csrftoken, "CT helper.js");
         $.ajax({
-            url: "https://fancytodo-server.onrender.com/quotes",
+            url: "http://localhost:3000/quotes",
             method: "POST",
             xhrFields: {
                 withCredentials: true
