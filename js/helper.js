@@ -4,6 +4,8 @@ function showLoginPage() {
     $("#navbar").hide();
     $("#notification-container").empty();
     $("#main-page").hide();
+    $('html, body').addClass("no-vertical-scroll");
+    $('.body-container').addClass("center-viewport");
 }
 
 function showRegisterPage() {
@@ -12,11 +14,15 @@ function showRegisterPage() {
     $("#navbar").hide();
     $("#notification-container").empty();
     $("#main-page").hide();
+    $('html, body').addClass("no-vertical-scroll");
+    $('.body-container').addClass("center-viewport");
 }
 
 function showMainPage(accesstoken, csrftoken, fullName) {
     getCurrentWeather(accesstoken, csrftoken);
     getQuote(accesstoken, csrftoken);
+    $('html, body').removeClass("no-vertical-scroll");
+    $('.body-container').removeClass("center-viewport");
     $("#user-name").text("");
     $("#user-name").text(fullName);
     $("#login-page").hide();
