@@ -107,7 +107,7 @@ function reauth(cb, id, event) {
             isAuthenticated = false;
             showLoginPage();
             console.log(err);
-            printError(err);
+            // printError(err);
         })
 }
 
