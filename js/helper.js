@@ -15,9 +15,6 @@ function showRegisterPage() {
 }
 
 function showMainPage(accesstoken, csrftoken, fullName) {
-    // console.log(accesstoken, "AT helper.js");
-    // console.log(csrftoken, "CT helper.js");
-    // console.log(fullName, "FN helper.js");
     getCurrentWeather(accesstoken, csrftoken);
     getQuote(accesstoken, csrftoken);
     $("#user-name").text("");
@@ -61,7 +58,6 @@ function login(){
             accesstoken = response.accessToken;
             csrftoken = response.csrfToken;
             fullName = response.fullName;
-            console.log(accesstoken, csrftoken, fullName, "login");
             showMainPage(accesstoken, csrftoken, fullName);
             Swal.fire(
                 'Logged In!',
@@ -110,8 +106,8 @@ function reauth(cb, id, event) {
         .fail((err) => {
             isAuthenticated = false;
             showLoginPage();
-            // console.log(err);
-            // printError(err);
+            console.log(err);
+            printError(err);
         })
 }
 
@@ -152,8 +148,6 @@ function register(){
 
 function logout(accesstoken, csrftoken) {
     // localStorage.clear();
-    console.log(accesstoken, "logout <<<<<<<<<");
-    console.log(csrftoken, "logout <<<<<<<<<");
     showLoginPage();
     $.ajax({
         url: "https://fancytodo-server.onrender.com/logout",
@@ -196,14 +190,14 @@ function handleCredentialResponse(response) {
             googleToken
         }
     })
-    .done((response) => {
+    .done((data) => {
         // localStorage.setItem("accesstoken", response.accesstoken);
         // localStorage.setItem("fullName", response.fullName);
         // getQuote();
-        accesstoken = response.accessToken;
-        csrftoken = response.csrfToken;
-        fullName = response.fullName;
-        showMainPage(response.accesstoken, response.csrftoken, response.fullName);
+        accesstoken = data.accessToken;
+        csrftoken = data.csrfToken;
+        fullName = data.fullName;
+        showMainPage(accesstoken, csrftoken, fullName);
         Swal.fire(
             'Logged In!',
             "Welcome!",
@@ -686,7 +680,6 @@ function getCurrentWeather(accesstoken, csrftoken) {
     function success(position) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
-        // console.log(latitude, longitude)
         $.ajax({
             url: "https://fancytodo-server.onrender.com/current-weather",
             method: "POST",
@@ -703,13 +696,11 @@ function getCurrentWeather(accesstoken, csrftoken) {
             }
         })
         .done((response) => {
-            // console.log(response);
             const city = response.name;
             // const date = unixToLocal(response.current.dt)[0];
             const date = unixToLocal(response.dt)[0];
             const time = unixToLocal(response.dt)[1];
             const dateTime = `${date}, ${time}`;
-            // console.log(date)
             // const description = firstLetterUpperCase(response.current.weather[0].description);
             const description = firstLetterUpperCase(response.weather[0].description);
             // const temperature = `${Math.round(response.current.temp)} \xB0C`;
@@ -754,7 +745,6 @@ function getForecast(accesstoken, csrftoken) {
     function success(position) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
-        // console.log(latitude, longitude)
         $.ajax({
             url: "https://fancytodo-server.onrender.com/weather",
             method: "POST",
@@ -771,7 +761,6 @@ function getForecast(accesstoken, csrftoken) {
             }
         })
         .done((response) => {
-            console.log(response)
             $("#forecast-content").empty();
             const city = response.city.name;
 
@@ -834,8 +823,6 @@ function getForecast(accesstoken, csrftoken) {
 }
 
 function getQuote(accesstoken, csrftoken) {
-    console.log(accesstoken, "AT helper.js");
-    console.log(csrftoken, "CT helper.js");
         $.ajax({
             url: "https://fancytodo-server.onrender.com/quotes",
             method: "POST",
