@@ -26,6 +26,10 @@ body {
    min-height: 100vh; 
 } */
 
+#notification-container {
+   z-index: 1000;
+}
+
 .main-page-container {
    margin-top: 4rem;
    margin-bottom: 0.5rem;
