@@ -128,6 +128,8 @@ function reauth(cb, id, event) {
             } else {
                 cb(accesstoken, csrftoken)
             }
+            // $('#navbar').hide().removeClass('hide');
+            // $('#body-container').hide().removeClass('hide');
         })
         .fail((err) => {
             isAuthenticated = false;
