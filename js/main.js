@@ -17,6 +17,9 @@ $(document).ready(() => {
     //     showLoginPage();
     // }
 
+    $('#navbar').removeClass('hide');
+    $('#body-container').removeClass('hide');
+
     reauth();
 
     $("#login-form").on("submit", (e) => {
