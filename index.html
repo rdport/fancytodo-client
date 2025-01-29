@@ -12,10 +12,10 @@
 </head>
 
 <body>
-    <div id="loadingMask" style="width: 100%; height: 100%; position: fixed; background: #fff;">
+    <div id="loadingMask" style="width: 100bvh; height: 100vh; position: absolute; background: #fff;">
         <h1>LOADING ... </h1>
     </div>
-    <nav class="navbar fixed-top navbar-light bg-light" id="navbar">
+    <nav class="navbar fixed-top navbar-light bg-light hide" id="navbar">
         <button type="button" id="btn-home" class="navbar-brand rounded navbar-btn">
             <img src="./images/navbar-logo.svg" width="30" height="30" class="d-inline-block align-top" alt=""
                 loading="lazy">
@@ -36,7 +36,7 @@
     </nav>
     <div id="notification-container"></div>
 
-    <div class="body-container">
+    <div class="body-container hide">
         <div id="login-page">
             <div class="register-login-content">
                 <div class="login-image-container">
