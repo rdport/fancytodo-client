@@ -1,6 +1,6 @@
 function showLoginPage() {
-    $('#body-container').hide().removeClass('hide');
-    $('#navbar').hide().removeClass('hide');
+    $('#body-container').removeClass('hide');
+    $('#navbar').removeClass('hide');
     $("#login-page").show();
     $("#register-page").hide();
     $("#navbar").hide();
@@ -14,8 +14,8 @@ function showLoginPage() {
 }
 
 function showRegisterPage() {
-    $('#body-container').hide().removeClass('hide');
-    $('#navbar').hide().removeClass('hide');
+    $('#body-container').removeClass('hide');
+    $('#navbar').removeClass('hide');
     $("#login-page").hide();
     $("#register-page").show();
     $("#navbar").hide();
@@ -27,8 +27,8 @@ function showRegisterPage() {
 function showMainPage(accesstoken, csrftoken, fullName) {
     $('html, body').removeClass("no-vertical-scroll");
     $('.body-container').removeClass("center-viewport");
-    $('#body-container').hide().removeClass('hide');
-    $('#navbar').hide().removeClass('hide');
+    $('#body-container').removeClass('hide');
+    $('#navbar').removeClass('hide');
     getCurrentWeather(accesstoken, csrftoken);
     getQuote(accesstoken, csrftoken);
     $("#user-name").text("");
