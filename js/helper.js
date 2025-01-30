@@ -7,6 +7,7 @@ function showLoginPage() {
     $("#notification-container").empty();
     $("#main-page").hide();
     $('.body-container').addClass("center-viewport");
+    $('#loadingMask').fadeOut();
     if (!isInfoShown) {
         showInfo();
         isInfoShown = true;
@@ -22,6 +23,7 @@ function showRegisterPage() {
     $("#notification-container").empty();
     $("#main-page").hide();
     $('.body-container').addClass("center-viewport");
+    $('#loadingMask').fadeOut();
 }
 
 function showMainPage(accesstoken, csrftoken, fullName) {
@@ -340,6 +342,7 @@ function fetchTodos(accesstoken, csrftoken){
                     </div>
                 </div>`);
         }
+        $('#loadingMask').fadeOut();
     })
     .fail((err) => {
         if (err.status === 419) {
