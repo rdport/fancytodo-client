@@ -1,4 +1,6 @@
 function showLoginPage() {
+    $('#navbar').hide().removeClass('hide');
+    $('#body-container').hide().removeClass('hide');
     $("#login-page").show();
     $("#register-page").hide();
     $("#navbar").hide();
@@ -12,6 +14,8 @@ function showLoginPage() {
 }
 
 function showRegisterPage() {
+    $('#navbar').hide().removeClass('hide');
+    $('#body-container').hide().removeClass('hide');
     $("#login-page").hide();
     $("#register-page").show();
     $("#navbar").hide();
@@ -23,6 +27,8 @@ function showRegisterPage() {
 function showMainPage(accesstoken, csrftoken, fullName) {
     $('html, body').removeClass("no-vertical-scroll");
     $('.body-container').removeClass("center-viewport");
+    $('#navbar').hide().removeClass('hide');
+    $('#body-container').hide().removeClass('hide');
     getCurrentWeather(accesstoken, csrftoken);
     getQuote(accesstoken, csrftoken);
     $("#user-name").text("");
@@ -119,8 +125,6 @@ function reauth(cb, id, event) {
             fullName = response.fullName;
             // $("#user-name").text(fullName);
             if (!isAuthenticated) {
-                $('#navbar').removeClass('hide');
-                $('#body-container').removeClass('hide');
                 showMainPage(accesstoken, csrftoken, fullName);
                 isAuthenticated = true;
             } else if (id && event) {
@@ -135,8 +139,6 @@ function reauth(cb, id, event) {
         })
         .fail((err) => {
             isAuthenticated = false;
-            $('#navbar').removeClass('hide');
-            $('#body-container').removeClass('hide');
             showLoginPage();
             // console.log(err);
             // printError(err);
