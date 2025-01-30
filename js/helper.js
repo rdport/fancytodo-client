@@ -119,8 +119,8 @@ function reauth(cb, id, event) {
             fullName = response.fullName;
             // $("#user-name").text(fullName);
             if (!isAuthenticated) {
-                $('#navbar').removeClass('hide');
                 $('#body-container').removeClass('hide');
+                $('#navbar').removeClass('hide');
                 showMainPage(accesstoken, csrftoken, fullName);
                 isAuthenticated = true;
             } else if (id && event) {
@@ -135,8 +135,8 @@ function reauth(cb, id, event) {
         })
         .fail((err) => {
             isAuthenticated = false;
-            $('#navbar').removeClass('hide');
             $('#body-container').removeClass('hide');
+            $('#navbar').removeClass('hide');
             showLoginPage();
             // console.log(err);
             // printError(err);
