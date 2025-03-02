@@ -1,3 +1,6 @@
+const baseURL = "http://localhost:3000";
+// const baseURL = "https://fancytodo-server.onrender.com";
+
 function showLoginPage() {
     $('#body-container').removeClass('hide');
     $('#navbar').removeClass('hide');
@@ -75,7 +78,7 @@ function login(){
     const password = $("#login-password").val();
 
     $.ajax({
-        url: "https://fancytodo-server.onrender.com/login",
+        url: `${baseURL}/login`,
         method: "POST",
         xhrFields: {
             withCredentials: true
@@ -111,7 +114,7 @@ function login(){
 
 function reauth(cb, id, event) {
     $.ajax({
-        url: "https://fancytodo-server.onrender.com/reauth",
+        url: `${baseURL}/reauth`,
         method: "POST",
         xhrFields: {
             withCredentials: true
@@ -153,7 +156,7 @@ function register(){
     const email = $("#register-email").val();
     const password = $("#register-password").val();
     $.ajax({
-        url: "https://fancytodo-server.onrender.com/register",
+        url: `${baseURL}/register`,
         method: "POST",
         xhrFields: {
             withCredentials: true
@@ -186,7 +189,7 @@ function logout(accesstoken, csrftoken) {
     // localStorage.clear();
     showLoginPage();
     $.ajax({
-        url: "https://fancytodo-server.onrender.com/logout",
+        url: `${baseURL}/logout`,
         method: "POST",
         xhrFields: {
             withCredentials: true
@@ -217,7 +220,7 @@ function logout(accesstoken, csrftoken) {
 function handleCredentialResponse(response) {
     var googleToken = response.credential;
     $.ajax({
-        url: "https://fancytodo-server.onrender.com/googleLogin",
+        url: `${baseURL}/googleLogin`,
         method: "POST",
         xhrFields: {
             withCredentials: true
@@ -251,7 +254,7 @@ function fetchTodos(accesstoken, csrftoken){
     $("#edit-form-notification-container").empty();
     $.ajax({
         method: "POST",
-        url : "https://fancytodo-server.onrender.com/todos",
+        url : `${baseURL}/todos`,
         xhrFields: {
             withCredentials: true
         },
@@ -361,7 +364,7 @@ function createTask(accesstoken, csrftoken) {
 
     $.ajax({
         method: "POST",
-        url : "https://fancytodo-server.onrender.com/todos/add",
+        url : `${baseURL}/todos/add`,
         xhrFields: {
             withCredentials: true
         },
@@ -400,7 +403,7 @@ function createTask(accesstoken, csrftoken) {
 function completeTask(accesstoken, csrftoken, id) {
     $.ajax({
         method: "PATCH",
-        url: `https://fancytodo-server.onrender.com/todos/${id}`,
+        url: `${baseURL}/todos/${id}`,
         headers: {
             accesstoken,
             csrftoken
@@ -433,7 +436,7 @@ function completeTask(accesstoken, csrftoken, id) {
 function uncompleteTask(accesstoken, csrftoken, id) {
     $.ajax({
         method: "PATCH",
-        url: `https://fancytodo-server.onrender.com/todos/${id}`,
+        url: `${baseURL}/todos/${id}`,
         xhrFields: {
             withCredentials: true
         },
@@ -466,7 +469,7 @@ function uncompleteTask(accesstoken, csrftoken, id) {
 function editForm(accesstoken, csrftoken, id) {
     $.ajax({
         method: "POST",
-        url: `https://fancytodo-server.onrender.com/todos/${id}`,
+        url: `${baseURL}/todos/${id}`,
         xhrFields: {
             withCredentials: true
         },
@@ -498,7 +501,7 @@ function editTask(accesstoken, csrftoken, id, event) {
     const due_date = $("#edit-task-due_date").val();
     $.ajax({
         method: "PUT",
-        url: `https://fancytodo-server.onrender.com/todos/${id}`,
+        url: `${baseURL}/todos/${id}`,
         xhrFields: {
             withCredentials: true
         },
@@ -538,7 +541,7 @@ function deleteConfirm(id) {
 function deleteTask(accesstoken, csrftoken, id) {
     $.ajax({
         method: "DELETE",
-        url: `https://fancytodo-server.onrender.com/todos/${id}`,
+        url: `${baseURL}/todos/${id}`,
         xhrFields: {
             withCredentials: true
         },
@@ -582,7 +585,7 @@ function deleteTask(accesstoken, csrftoken, id) {
 //         const longitude = position.coords.longitude;
 //         console.log(latitude, longitude)
 //         $.ajax({
-//             url: "https://fancytodo-server.onrender.com/weather",
+//             url: `${baseURL}/weather`,
 //             method: "POST",
 //             headers: {
 //                 accesstoken: localStorage.getItem("accesstoken")
@@ -649,7 +652,7 @@ function deleteTask(accesstoken, csrftoken, id) {
 //         const longitude = position.coords.longitude;
 //         console.log(latitude, longitude)
 //         $.ajax({
-//             url: "https://fancytodo-server.onrender.com/weather",
+//             url: `${baseURL}/weather`,
 //             method: "POST",
 //             headers: {
 //                 accesstoken: localStorage.getItem("accesstoken")
@@ -718,7 +721,7 @@ function getCurrentWeather(accesstoken, csrftoken) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
         $.ajax({
-            url: "https://fancytodo-server.onrender.com/current-weather",
+            url: `${baseURL}/current-weather`,
             method: "POST",
             xhrFields: {
                 withCredentials: true
@@ -783,7 +786,7 @@ function getForecast(accesstoken, csrftoken) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
         $.ajax({
-            url: "https://fancytodo-server.onrender.com/weather",
+            url: `${baseURL}/weather`,
             method: "POST",
             xhrFields: {
                 withCredentials: true
@@ -861,7 +864,7 @@ function getForecast(accesstoken, csrftoken) {
 
 function getQuote(accesstoken, csrftoken) {
         $.ajax({
-            url: "https://fancytodo-server.onrender.com/quotes",
+            url: `${baseURL}/quotes`,
             method: "POST",
             xhrFields: {
                 withCredentials: true

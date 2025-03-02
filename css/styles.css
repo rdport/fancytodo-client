@@ -186,9 +186,11 @@ body {
    padding-top: 13rem;
 }
 
-/* .welcome-container {
-   min-width: 360px;
-} */
+.welcome-container {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+}
 
 .main-top-container {
    min-width: 22.5rem;
@@ -473,6 +475,55 @@ input[type=text], input[type=email], input[type=password], input[type=date] {
 #user-name {
    font-size: 1.5rem;
    text-align: center;
+   font-weight: 700;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+#current-weather-temp, #current-weather-feels-like, #current-weather-wind {
+   font-size: 0.85rem;
+}
+
+#city {
+   margin-top: 0;
+   margin-bottom: 0;
+}
+
+#current-weather-date {
+   font-size: 0.95rem;
+   margin-bottom: 0.3rem;
+}
+
+/* #current-weather-desc {
+   margin-bottom: 0rem;
+} */
+
+#current-weather-temp {
+   margin-bottom: 0rem;
+}
+
+#current-weather-feels-like {
+   margin-bottom: 0rem;
+}
+
+#current-weather-wind {
+   /* margin-bottom: 1rem; */
+}
+
+.weather-middle-container {
+   display:flex;
+   flex-direction:row;
+   align-items: center;
+}
+
+#current-weather-icon {
+   margin-bottom: 1.3rem;
+}
+
+.weather-stats-container {
+   margin-left: 1.5rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
 }
 
 .modal-content {
@@ -482,10 +533,10 @@ input[type=text], input[type=email], input[type=password], input[type=date] {
 .weather-content {
    display:flex;
    flex-direction: column;
-   justify-content: center;
+   justify-content: space-between;
    background-color: #ffe6cc;
    padding: 1rem;
-   max-height: 22rem;
+   min-height: 20rem;
    overflow: hidden;
    margin: 1rem 1rem;
 }
@@ -609,22 +660,137 @@ input[type=text], input[type=email], input[type=password], input[type=date] {
       top: 90%;
       left: 98%;
    }
-
-
 }
 
-@media only screen and (min-width:992px) and (max-width:1045px) {
-   #city {
-      margin-bottom:0;
+@media only screen and (min-width:414px) {
+   #current-weather-wind {
+      margin-bottom: 1rem;
+   }
+}
+
+@media only screen and (min-width:463px) {
+   #current-weather-icon {
+      height: 7rem;
+   }   
+}
+
+@media only screen and (min-width:768px) {
+   .weather-content {
+      height: 25rem;
+   }
+
+   #current-weather-icon {
+      height: 8rem;
+   }
+}
+@media only screen and (min-width:911px) {
+   .weather-middle-container {
+      margin-top: -1rem;
+   }
+
+   #current-weather-desc {
+      font-size: 2rem;
    }
 
    #current-weather-temp, #current-weather-feels-like, #current-weather-wind {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+   }
+
+   #current-weather-icon {
+      height: 9rem;
+   }
+}
+
+
+@media only screen and (min-width:992px) {
+   #city {
+      margin-bottom:-1rem;
+   }
+
+   #current-weather-desc {
+      margin-bottom: 0;
+   }
+
+   #current-weather-icon {
+      height: 7.5rem;
+   }
+   
+   .weather-content {
+      padding: 0.7rem;
+   }
+
+   .weather-stats-container{
+      margin-left: 0.5rem;
+   }
+
+   #current-weather-temp, #current-weather-feels-like, #current-weather-wind {
+      font-size: 0.75rem;
    }
    
    #current-weather-date {
-      font-size:0.9rem;
+      font-size:0.85rem;
       margin-bottom:0;
+   }
+}
+
+@media only screen and (min-width:1126px) {
+   #current-weather-date {
+      font-size:0.95rem;
+      margin-bottom:0;
+   }
+
+   .weather-content {
+      padding: 1.5rem;
+   }
+}
+
+@media only screen and (min-width:1302px) {
+   /* #city {
+      margin-bottom: -1rem;
+   } */
+
+   #current-weather-desc {
+      margin-top: 0rem;
+      margin-bottom: 0.5rem ;
+   }
+
+   #current-weather-icon {
+      height: 7.5rem;
+   }
+   
+   .weather-content {
+      padding: 0.7rem;
+   }
+
+   .weather-stats-container{
+      margin-left: 0.5rem;
+   }
+
+   #current-weather-temp, #current-weather-feels-like, #current-weather-wind {
+      font-size: 1rem;
+   }
+   
+   #current-weather-date {
+      font-size:1.25rem;
+      margin-bottom:0;
+   }
+
+   #current-weather-wind {
+      margin-bottom: 0.5rem;
+   }
+}
+
+@media only screen and (min-width:1332px) {
+   #current-weather-date {
+      font-size:1.2rem;
+   }
+   
+   .weather-content {
+      padding: 1.5rem;
+   }
+   
+   #current-weather-desc {
+      font-size: 1.85rem;
    }
 }
 
