@@ -1,5 +1,5 @@
-const baseURL = "http://localhost:3000";
-// const baseURL = "https://fancytodo-server.onrender.com";
+// const baseURL = "http://localhost:3000";
+const baseURL = "https://fancytodo-server.onrender.com";
 
 function showLoginPage() {
     $('#body-container').removeClass('hide');
